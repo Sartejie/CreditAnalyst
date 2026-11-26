@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CreditApplication>
+    <Borrower>
+        <fullName>Петров Петр Петрович</fullName>
+        <citizenship>РФ</citizenship>
+        <idNumber>9876 543210</idNumber>
+        <birthDate>1985-05-15</birthDate>
+        <document>Паспорт РФ</document>
+        <address>г. Санкт-Петербург, Невский пр., д. 10</address>
+        <monthlyIncome>85000.0</monthlyIncome>
+    </Borrower>
+    
+    <Form2501>
+        <CreditDeal>
+            <contractNumber>CR-2024-777</contractNumber>
+            <dealType>Кредит</dealType>
+            <creditType>Автокредит</creditType>
+            <conclusionDate>2024-01-10</conclusionDate>
+            <amount>1200000.0</amount>
+            <currency>RUB</currency>
+            <term>36</term>
+            <repaymentDate>2027-01-10</repaymentDate>
+            <security>Залог ТС</security>
+            <riskGroup>A</riskGroup>
+        </CreditDeal>
+        <CreditDeal>
+            <contractNumber>CR-2024-888</contractNumber>
+            <dealType>Кредит</dealType>
+            <creditType>Потребительский</creditType>
+            <conclusionDate>2024-02-15</conclusionDate>
+            <amount>300000.0</amount>
+            <currency>RUB</currency>
+            <term>12</term>
+            <repaymentDate>2025-02-15</repaymentDate>
+            <security>Без обеспечения</security>
+            <riskGroup>B</riskGroup>
+        </CreditDeal>
+    </Form2501>
+</CreditApplication>
