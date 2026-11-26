@@ -1,0 +1,46 @@
+{
+  "borrower": {
+    "lastName": "Сидорова",
+    "firstName": "Анна",
+    "middleName": "Сергеевна",
+    "citizenship": "Республика Беларусь",
+    "idNumber": "4220990B012PB3",
+    "birthDate": "1990-09-22",
+    "documentType": "ID-карта гражданина РБ",
+    "documentSeriesNumber": "ID 7654321",
+    "documentIssueDate": "2022-06-05",
+    "country": "Республика Беларусь",
+    "region": "Брестская область",
+    "district": "Брестский район",
+    "locality": "г. Брест",
+    "monthlyIncome": 2800.00
+  },
+  "form2501": {
+    "creditDeals": [
+      {
+        "contractNumber": "BY-2025-104",
+        "dealType": "Кредитный договор",
+        "creditType": "Автокредит",
+        "conclusionDate": "2025-02-10",
+        "amount": 18000.00,
+        "currency": "BYN",
+        "term": 36,
+        "renewalTerm": 0,
+        "repaymentDate": "2028-02-10",
+        "security": "Залог транспортного средства",
+        "riskGroup": "1",
+        "relevanceDate": "2026-11-01",
+        "overdueDays": 0,
+        "overdueAmount": 0.0,
+        "monthlyPayment": 610.00
+      }
+    ],
+    "overdrafts": [
+      {
+        "contractDate": "2025-05-01",
+        "limitAmount": 1000.00,
+        "limitSetDate": "2025-05-01"
+      }
+    ]
+  }
+}

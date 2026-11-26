@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CreditApplication>
+    <Borrower>
+        <lastName>Петров</lastName>
+        <firstName>Пётр</firstName>
+        <middleName>Петрович</middleName>
+        <citizenship>Республика Беларусь</citizenship>
+        <idNumber>3150585A001PB1</idNumber>
+        <birthDate>1985-05-15</birthDate>
+        <documentType>Паспорт гражданина РБ</documentType>
+        <documentSeriesNumber>MP 1234567</documentSeriesNumber>
+        <documentIssueDate>2018-04-10</documentIssueDate>
+        <country>Республика Беларусь</country>
+        <region>Минская область</region>
+        <district>Минский район</district>
+        <locality>г. Минск</locality>
+        <monthlyIncome>3200.00</monthlyIncome>
+    </Borrower>
+
+    <Form2501>
+        <CreditDeal>
+            <contractNumber>BY-2024-001</contractNumber>
+            <dealType>Кредитный договор</dealType>
+            <creditType>Потребительский</creditType>
+            <conclusionDate>2024-03-01</conclusionDate>
+            <amount>6000.00</amount>
+            <currency>BYN</currency>
+            <term>24</term>
+            <renewalTerm>0</renewalTerm>
+            <repaymentDate>2026-03-01</repaymentDate>
+            <security>Поручительство</security>
+            <riskGroup>1</riskGroup>
+            <relevanceDate>2026-11-01</relevanceDate>
+            <overdueDays>0</overdueDays>
+            <overdueAmount>0.00</overdueAmount>
+            <monthlyPayment>290.00</monthlyPayment>
+        </CreditDeal>
+        <Overdraft>
+            <contractDate>2025-01-15</contractDate>
+            <limitAmount>1500.00</limitAmount>
+            <limitSetDate>2025-01-15</limitSetDate>
+        </Overdraft>
+    </Form2501>
+</CreditApplication>

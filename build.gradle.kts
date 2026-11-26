@@ -13,6 +13,8 @@ dependencies {
     implementation("org.xerial:sqlite-jdbc:3.54.1.0")
     implementation("com.formdev:flatlaf:3.5.4")
     implementation("com.formdev:flatlaf-extras:3.5.4")
+    implementation("com.github.librepdf:openpdf:2.0.3")
+    implementation("com.fasterxml.jackson.core:jackson-databind:2.18.2")
     testImplementation(platform("org.junit:junit-bom:6.0.0"))
     testImplementation("org.junit.jupiter:junit-jupiter")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
