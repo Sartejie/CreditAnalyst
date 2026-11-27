@@ -92,7 +92,7 @@ public class LoanApplicationPanel extends JPanel {
         addField(borrowerPanel, gbc, row++, "Среднемесячный доход*:", incomeField);
         addField(borrowerPanel, gbc, row++, "Учётная запись клиента:", clientLoginBox);
 
-        tabbedPane.addTab("1. Заёмщик (Форма 2501)", new JScrollPane(borrowerPanel));
+        tabbedPane.addTab("1. Заёмщик", new JScrollPane(borrowerPanel));
 
         // --- Вкладка 2: Сделки и овердрафты (Форма 2501) ---
         JPanel formPanel = new JPanel(new BorderLayout(8, 8));

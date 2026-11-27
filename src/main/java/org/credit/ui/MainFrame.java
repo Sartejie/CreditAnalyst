@@ -68,7 +68,7 @@ public class MainFrame extends JFrame {
         if (isSpecialist) {
             LoanApplicationPanel appPanel = new LoanApplicationPanel(
                     currentUser, scoringModel, approvedLoan -> activeLoansPanel.reloadLoans());
-            mainTabs.addTab("Оценка заявки и отчёт (Форма 2501)", appPanel);
+            mainTabs.addTab("Новая заявка на кредит", appPanel);
             mainTabs.addTab("Действующие кредиты", activeLoansPanel);
         } else {
             mainTabs.addTab("Мои кредиты и платежи", activeLoansPanel);

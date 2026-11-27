@@ -8,11 +8,6 @@ import javax.swing.*;
 
 public class Main {
     public static void main(String[] args) {
-        // Инициализация схемы локальной БД и пользователей по умолчанию при старте
-        try (Database ignored = new Database()) {
-            // Проверка подключения к SQLite
-        }
-
         SwingUtilities.invokeLater(() -> {
             try {
                 UIManager.setLookAndFeel(new FlatLightLaf());
