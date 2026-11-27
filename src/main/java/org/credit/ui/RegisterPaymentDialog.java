@@ -2,7 +2,9 @@ package org.credit.ui;
 
 import org.credit.db.Database;
 import org.credit.model.ActiveLoan;
+import org.credit.model.CreditSpecialist;
 import org.credit.model.Payment;
+import org.credit.model.User;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -13,17 +15,19 @@ import java.util.Date;
  * Экран 8: Регистрация фактического платежа и оформление досрочного погашения (UC-02, UC-03).
  */
 public class RegisterPaymentDialog extends JDialog {
+    private User currentUser;
     private final ActiveLoan loan;
     private JTextField amountField;
     private JSpinner dateSpinner;
     private JLabel infoLabel;
     private boolean paymentRegistered = false;
 
-    public RegisterPaymentDialog(Window owner, ActiveLoan loan) {
+    public RegisterPaymentDialog(Window owner, ActiveLoan loan, User currentUser) {
         super(owner, "Регистрация платежа по кредиту " +
                 (loan.getContractNumber() != null ? loan.getContractNumber() : "#" + loan.getId()),
                 ModalityType.APPLICATION_MODAL);
         this.loan = loan;
+        this.currentUser = currentUser;
         initUI();
         pack();
         setLocationRelativeTo(owner);
@@ -105,6 +109,16 @@ public class RegisterPaymentDialog extends JDialog {
             ActiveLoan.PaymentAnalysis analysis = loan.analyzePayment(amount, payDate);
 
             boolean confirmEarly = false;
+            boolean isSpecialist = currentUser instanceof CreditSpecialist;
+            if(analysis.exceedsScheduledDue && !isSpecialist)
+            {
+                JOptionPane.showMessageDialog(this,
+                        String.format("Введённая сумма (%.2f) превышает полную задолженность (%.2f).\n" +
+                                        "Досрочное погашение возможно только кредитным аналитиком",
+                                amount, analysis.totalDebt.doubleValue()),
+                        "Ошибка", JOptionPane.INFORMATION_MESSAGE);
+                return;
+            }
             if (analysis.exceedsScheduledDue) {
                 String msg = analysis.exceedsTotalDebt
                         ? String.format("Введённая сумма (%.2f) превышает полную задолженность (%.2f).\n" +

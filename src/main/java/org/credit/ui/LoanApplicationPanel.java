@@ -106,7 +106,7 @@ public class LoanApplicationPanel extends JPanel {
         dealsTable.setRowHeight(24);
 
         JPanel dealsSection = new JPanel(new BorderLayout(6, 6));
-        dealsSection.setBorder(BorderFactory.createTitledBorder("Кредитные сделки (CreditDeal)"));
+        dealsSection.setBorder(BorderFactory.createTitledBorder("Кредитные сделки"));
         dealsSection.add(new JScrollPane(dealsTable), BorderLayout.CENTER);
 
         JPanel dealsBtns = new JPanel(new FlowLayout(FlowLayout.LEFT));
@@ -174,7 +174,7 @@ public class LoanApplicationPanel extends JPanel {
 
         formPanel.add(dealsSection, BorderLayout.CENTER);
         formPanel.add(ovSection, BorderLayout.SOUTH);
-        tabbedPane.addTab("2. Кредитная история (Форма 2501)", formPanel);
+        tabbedPane.addTab("2. Кредитная история", formPanel);
 
         // --- Вкладка 3: Параметры заявки ---
         JPanel loanPanel = new JPanel(new GridBagLayout());
@@ -196,7 +196,7 @@ public class LoanApplicationPanel extends JPanel {
         addField(loanPanel, gbc, row++, "Сумма кредита*:", amountField);
         addField(loanPanel, gbc, row++, "Срок (мес.)*:", termSpinner);
         addField(loanPanel, gbc, row++, "Процентная ставка (% годовых)*:", rateField);
-        addField(loanPanel, gbc, row++, "Способ возврата (Инструкция № 488):", methodComboBox);
+        addField(loanPanel, gbc, row++, "Способ возврата:", methodComboBox);
         addField(loanPanel, gbc, row++, "Дата заявки*:", appDateSpinner);
         addField(loanPanel, gbc, row++, "Нормативный порог ПДН (%):", pdnThresholdField);
 
@@ -205,9 +205,9 @@ public class LoanApplicationPanel extends JPanel {
 
         // --- Нижняя панель ---
         JPanel bottomPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT, 8, 8));
-        JButton importXmlBtn = new JButton("Импорт XML (Форма 2501)");
+        JButton importXmlBtn = new JButton("Импорт XML");
         importXmlBtn.addActionListener(e -> importFile(true));
-        JButton importJsonBtn = new JButton("Импорт JSON (Форма 2501)");
+        JButton importJsonBtn = new JButton("Импорт JSON");
         importJsonBtn.addActionListener(e -> importFile(false));
         JButton submitBtn = new JButton("Рассчитать и сформировать отчёт");
         submitBtn.putClientProperty("JButton.buttonType", "default");
@@ -397,13 +397,13 @@ public class LoanApplicationPanel extends JPanel {
             for (ValidationError err : errors) {
                 msg.append("• ").append(err.toString()).append("\n");
             }
-            JOptionPane.showMessageDialog(this, msg.toString(), "Ошибка валидации (UC-13)", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, msg.toString(), "Ошибка валидации", JOptionPane.WARNING_MESSAGE);
             return;
         }
 
         if (creditDealsList.isEmpty()) {
             JOptionPane.showMessageDialog(this,
-                    "Кредитные сделки в Форме 2501 отсутствуют. Согласно политике скоринга (п. 4.4 ТЗ), при неполных данных будет применена консервативная оценка «Высокий риск».",
+                    "Кредитные сделки в Форме 2501 отсутствуют. Согласно политике скоринга, при неполных данных будет применена оценка «Высокий риск».",
                     "Предупреждение о неполных данных", JOptionPane.INFORMATION_MESSAGE);
         }
 
@@ -448,7 +448,7 @@ public class LoanApplicationPanel extends JPanel {
 
             JOptionPane.showMessageDialog(this,
                     "Кредит утверждён! Создан договор " + activeLoan.getContractNumber(),
-                    "Утверждение кредита (UC-15)", JOptionPane.INFORMATION_MESSAGE);
+                    "Утверждение кредита", JOptionPane.INFORMATION_MESSAGE);
 
             if (onLoanApproved != null) {
                 onLoanApproved.accept(activeLoan);

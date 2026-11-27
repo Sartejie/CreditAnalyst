@@ -60,15 +60,15 @@ public class ActiveLoansPanel extends JPanel {
         add(new JScrollPane(table), BorderLayout.CENTER);
 
         JPanel actionsPanel = new JPanel(new FlowLayout(FlowLayout.LEFT, 8, 4));
-        JButton openBtn = new JButton("Открыть сопровождение (UC-07)");
+        JButton openBtn = new JButton("Открыть сопровождение");
         openBtn.addActionListener(e -> openSelectedServicing());
-        JButton payBtn = new JButton("Зарегистрировать платёж (UC-02)");
+        JButton payBtn = new JButton("Зарегистрировать платёж");
         payBtn.addActionListener(e -> paySelectedLoan());
         actionsPanel.add(openBtn);
         actionsPanel.add(payBtn);
 
         if (currentUser instanceof CreditSpecialist) {
-            JButton modifyBtn = new JButton("Изменить параметры (UC-05)");
+            JButton modifyBtn = new JButton("Изменить параметры");
             modifyBtn.addActionListener(e -> modifySelectedLoan());
             actionsPanel.add(modifyBtn);
         }
@@ -139,7 +139,7 @@ public class ActiveLoansPanel extends JPanel {
                     "Операция недоступна", JOptionPane.WARNING_MESSAGE);
             return;
         }
-        RegisterPaymentDialog dlg = new RegisterPaymentDialog(SwingUtilities.getWindowAncestor(this), loan);
+        RegisterPaymentDialog dlg = new RegisterPaymentDialog(SwingUtilities.getWindowAncestor(this), loan, currentUser);
         dlg.setVisible(true);
         if (dlg.isPaymentRegistered()) reloadLoans();
     }

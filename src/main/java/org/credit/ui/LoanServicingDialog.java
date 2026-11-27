@@ -88,7 +88,7 @@ public class LoanServicingDialog extends JDialog {
         };
         JTable schTable = new JTable(scheduleTableModel);
         schTable.setRowHeight(24);
-        tabs.addTab("Актуальный график платежей (UC-01)", new JScrollPane(schTable));
+        tabs.addTab("Актуальный график платежей", new JScrollPane(schTable));
 
         String[] histCols = {"Дата платежа", "Общая сумма", "Основной долг", "Проценты/просрочка", "Остаток долга", "Тип платежа"};
         historyTableModel = new DefaultTableModel(histCols, 0) {
@@ -96,7 +96,7 @@ public class LoanServicingDialog extends JDialog {
         };
         JTable histTable = new JTable(historyTableModel);
         histTable.setRowHeight(24);
-        tabs.addTab("История платежей (UC-04)", new JScrollPane(histTable));
+        tabs.addTab("История платежей", new JScrollPane(histTable));
 
         add(tabs, BorderLayout.CENTER);
 
@@ -187,7 +187,7 @@ public class LoanServicingDialog extends JDialog {
     }
 
     private void onRegisterPayment() {
-        RegisterPaymentDialog dlg = new RegisterPaymentDialog(this, loan);
+        RegisterPaymentDialog dlg = new RegisterPaymentDialog(this, loan, currentUser);
         dlg.setVisible(true);
         if (dlg.isPaymentRegistered()) {
             reloadLoanFromDb();
@@ -217,9 +217,9 @@ public class LoanServicingDialog extends JDialog {
                 JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
         if (res == JOptionPane.OK_OPTION) {
             loan.checkAndUpdateOverdue((Date) spinner.getValue());
-            try (Database db = new Database()) {
-                db.UpdateLoan(loan);
-            }
+            //try (Database db = new Database()) {
+            //    db.UpdateLoan(loan);
+            //}
             updated = true;
             refreshView();
         }

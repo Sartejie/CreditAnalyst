@@ -23,6 +23,10 @@ import javax.xml.transform.stream.StreamResult;
 import java.awt.Color;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardCopyOption;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -102,7 +106,7 @@ public class FinalReport {
             PdfWriter.getInstance(document, new FileOutputStream(targetFile));
             document.open();
 
-            BaseFont baseFont = loadCyrillicBaseFont();
+            BaseFont baseFont = CYRILLIC_FONT;
             Font titleFont = new Font(baseFont, 15, Font.BOLD);
             Font sectionFont = new Font(baseFont, 11, Font.BOLD);
             Font regularFont = new Font(baseFont, 9.5f, Font.NORMAL);
@@ -218,26 +222,25 @@ public class FinalReport {
         }
     }
 
+    private static final BaseFont CYRILLIC_FONT = loadCyrillicBaseFont();
+
     private static BaseFont loadCyrillicBaseFont() {
-        String[] candidates = {
-                "C:/Windows/Fonts/arial.ttf",
-                "C:/Windows/Fonts/times.ttf",
-                "C:/Windows/Fonts/segoeui.ttf",
-                "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf"
-        };
-        for (String path : candidates) {
-            File f = new File(path);
-            if (f.exists()) {
-                try {
-                    return BaseFont.createFont(path, BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
-                } catch (Exception ignored) {
-                }
+        try (InputStream is = FinalReport.class.getResourceAsStream("/fonts/DejaVuSans.ttf")) {
+            if (is == null) {
+                throw new IllegalStateException("Шрифт /fonts/DejaVuSans.ttf не найден в classpath");
             }
-        }
-        try {
-            return BaseFont.createFont(BaseFont.HELVETICA, "Cp1251", BaseFont.NOT_EMBEDDED);
+
+            Path tmp = Files.createTempFile("DejaVuSans", ".ttf");
+            Files.copy(is, tmp, StandardCopyOption.REPLACE_EXISTING);
+            tmp.toFile().deleteOnExit();
+
+            return BaseFont.createFont(
+                    tmp.toAbsolutePath().toString(),
+                    BaseFont.IDENTITY_H,
+                    BaseFont.EMBEDDED
+            );
         } catch (Exception e) {
-            throw new RuntimeException("Не удалось инициализировать шрифт для PDF", e);
+            throw new RuntimeException("Не удалось загрузить шрифт для PDF", e);
         }
     }
 

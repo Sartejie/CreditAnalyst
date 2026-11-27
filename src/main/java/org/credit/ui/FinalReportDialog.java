@@ -82,16 +82,16 @@ public class FinalReportDialog extends JDialog {
         bottomPanel.setBorder(new EmptyBorder(4, 16, 12, 16));
 
         JPanel leftActions = new JPanel(new FlowLayout(FlowLayout.LEFT, 8, 0));
-        JButton saveDbBtn = new JButton("Сохранить в БД");
-        saveDbBtn.addActionListener(e -> onSaveToDb(saveDbBtn));
+        //JButton saveDbBtn = new JButton("Сохранить в БД");
+        //saveDbBtn.addActionListener(e -> onSaveToDb(saveDbBtn));
         JButton exportPdfBtn = new JButton("Экспорт PDF");
         exportPdfBtn.addActionListener(e -> onExportPdf());
-        JButton exportXmlBtn = new JButton("Экспорт XML");
-        exportXmlBtn.addActionListener(e -> onExportXml());
+        //JButton exportXmlBtn = new JButton("Экспорт XML");
+        //exportXmlBtn.addActionListener(e -> onExportXml());
 
-        leftActions.add(saveDbBtn);
+        //leftActions.add(saveDbBtn);
         leftActions.add(exportPdfBtn);
-        leftActions.add(exportXmlBtn);
+        //leftActions.add(exportXmlBtn);
 
         JPanel rightActions = new JPanel(new FlowLayout(FlowLayout.RIGHT, 8, 0));
         JButton editBtn = new JButton(allowApproval ? "Вернуться" : "Закрыть");
